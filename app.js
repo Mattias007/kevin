@@ -1,33 +1,35 @@
-/* (async () => {
-    const response = await fetch('https://dummyjson.com/products')
-    const { products } = await response.json();
-    console.log(products)
-})(); */
+// function to get product data
+export async function getProductsData() {
 
-async function getProductsData() {
+    // fetch request to dummyjson and save response to response
     const response = await fetch('https://dummyjson.com/products');
+    // makes resopnes in to json format and saves producs in to array
     const { products } = await response.json();
+    // returns the array
     return products;
 }
 
 
 
-/* https://dummyjson.com/products/categories */
 
+// function to get product data
 async function getProductCategories() {
+    // fetch request to dummyjson and save response to response
     const response = await fetch('https://dummyjson.com/products/categories');
+    // makes resopnes in to json format and saves producs in to array
     const data = await response.json();
-
+    // returns the array
     return data;
 }
 
-
+// Tee UI button elemente samapalju kui on kategooriaid
 async function createCategoryButtons() {
-    // Tee UI button elemente samapalju kui on kategooriaid
+    // Runs get product categori and save returned value to categories
     const categories = await getProductCategories();
-
+    // Gets html document from DOM and save it to const
     const categoryList = document.querySelector('.category-list');
     
+    // Makes html button for each category goten from the 
     categories.forEach(category => {
         const button = document.createElement('button');
         button.classList.add('category-button');
